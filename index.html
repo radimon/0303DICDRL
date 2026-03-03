@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edwin Huang — Personal</title>
+  <meta name="description" content="Edwin Huang's personal page. Welcome." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --olive:       #3D473A;
+      --olive-deep:  #2C342A;
+      --sage-light:  #E7E8E1;
+      --white:       #FFFFFF;
+      --charcoal:    #1A1A1A;
+      --muted:       #7A8475;
+      --serif:       'Playfair Display', Georgia, serif;
+      --sans:        'Inter', system-ui, sans-serif;
+      --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--sage-light);
+      color: var(--charcoal);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(61, 71, 58, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Left panel — olive */
+    .hero-left {
+      background: var(--olive);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -80px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.9s var(--ease-out) 0.2s both;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      animation: fadeUp 0.9s var(--ease-out) 0.35s both;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      margin: 2.2rem 0;
+      animation: expandX 0.7s var(--ease-out) 0.55s both;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      max-width: 340px;
+      animation: fadeUp 0.9s var(--ease-out) 0.65s both;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      margin-top: 2.8rem;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 50px;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+      animation: fadeUp 0.9s var(--ease-out) 0.8s both;
+      align-self: flex-start;
+    }
+
+    .hero-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+    }
+
+    /* Right panel — sage */
+    .hero-right {
+      background: var(--sage-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 8rem 5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .clock-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      animation: fadeUp 0.9s var(--ease-out) 0.5s both;
+    }
+
+    .clock-display {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 400;
+      color: var(--olive);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      animation: fadeUp 0.9s var(--ease-out) 0.65s both;
+    }
+
+    .clock-seconds {
+      font-size: 0.45em;
+      color: var(--muted);
+      vertical-align: middle;
+      margin-left: 0.15em;
+    }
+
+    .clock-date {
+      font-size: 0.88rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-top: 1rem;
+      animation: fadeUp 0.9s var(--ease-out) 0.78s both;
+    }
+
+    /* Decorative circle */
+    .deco-circle {
+      position: absolute;
+      top: 50%; right: -120px;
+      transform: translateY(-50%);
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      border: 1px solid rgba(61,71,58,0.12);
+      pointer-events: none;
+      animation: slowSpin 18s linear infinite;
+    }
+    .deco-circle::after {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      border-radius: 50%;
+      border: 1px solid rgba(61,71,58,0.08);
+    }
+
+    /* Timezone badge */
+    .tz-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 0.5rem 1.1rem;
+      background: rgba(61,71,58,0.08);
+      border-radius: 50px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--olive);
+      animation: fadeUp 0.9s var(--ease-out) 0.9s both;
+    }
+
+    .tz-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--olive);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    /* ── About strip ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 42vh;
+    }
+
+    .about-solid {
+      background: var(--olive-deep);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 5rem;
+    }
+
+    .about-solid p {
+      max-width: 380px;
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .about-light {
+      background: var(--sage-light);
+      display: flex;
+      align-items: center;
+      padding: 5rem;
+    }
+
+    .about-light-inner {
+      max-width: 380px;
+    }
+
+    .about-light-inner h3 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .about-light-inner p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--olive);
+      padding: 3rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes expandX {
+      from { width: 0; opacity: 0; }
+      to   { width: 48px; opacity: 1; }
+    }
+
+    @keyframes slowSpin {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to   { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero, .about {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left, .hero-right {
+        min-height: 55vh;
+        padding: 7rem 2rem 3.5rem;
+      }
+
+      .about-solid, .about-light {
+        padding: 3.5rem 2rem;
+      }
+      .about-solid { justify-content: flex-start; }
+
+      .deco-circle { display: none; }
+
+      footer {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+        padding: 2.5rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a class="nav-logo" href="#">E. Huang</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+
+    <!-- Left: Name -->
+    <div class="hero-left">
+      <span class="hero-eyebrow">Personal · Portfolio</span>
+      <h1 class="hero-name">
+        Edwin<br /><em>Huang</em>
+      </h1>
+      <div class="divider"></div>
+      <p class="hero-tagline">
+        Passionate creator, thoughtful thinker,<br />and lifelong learner — welcome to my corner of the world.
+      </p>
+      <a class="hero-btn" href="#about">Discover More</a>
+    </div>
+
+    <!-- Right: Clock -->
+    <div class="hero-right">
+      <div class="deco-circle"></div>
+      <span class="clock-label">Current Time</span>
+      <div class="clock-display" id="clock-time">
+        --:--<span class="clock-seconds" id="clock-secs">--</span>
+      </div>
+      <div class="clock-date" id="clock-date">Loading…</div>
+      <div class="tz-badge">
+        <span class="tz-dot"></span>
+        <span id="tz-name">—</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── About ── -->
+  <section class="about" id="about">
+    <div class="about-solid">
+      <p>"The best way to predict the future is to create it."</p>
+    </div>
+    <div class="about-light">
+      <div class="about-light-inner">
+        <h3>Hello, World.</h3>
+        <p>
+          I'm Edwin Huang — developer, designer, and eternal optimist.
+          I believe in crafting experiences that are both beautiful and meaningful,
+          bridging technology with human connection. Every great journey begins
+          with a single step, and this is mine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <span class="footer-name">Edwin Huang</span>
+    <span class="footer-copy">&copy; <span id="footer-year"></span> · All Rights Reserved</span>
+  </footer>
+
+  <!-- ── Clock Script ── -->
+  <script>
+    const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const now  = new Date();
+      const h    = now.getHours();
+      const m    = now.getMinutes();
+      const s    = now.getSeconds();
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      const h12  = h % 12 || 12;
+
+      document.getElementById('clock-time').childNodes[0].textContent =
+        `${pad(h12)}:${pad(m)}`;
+      document.getElementById('clock-secs').textContent = `${pad(s)} ${ampm}`;
+
+      const day  = DAYS[now.getDay()];
+      const date = now.getDate();
+      const mon  = MONTHS[now.getMonth()];
+      const year = now.getFullYear();
+      document.getElementById('clock-date').textContent = `${day}, ${mon} ${date}, ${year}`;
+
+      // Timezone
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      document.getElementById('tz-name').textContent = tz;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    // Footer year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
